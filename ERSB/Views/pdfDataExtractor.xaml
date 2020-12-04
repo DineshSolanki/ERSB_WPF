@@ -1,0 +1,52 @@
+﻿<UserControl x:Class="ERSB.Views.pdfDataExtractor"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:viewModels="clr-namespace:ERSB.ViewModels"
+             mc:Ignorable="d"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             d:DataContext="{d:DesignInstance viewModels:pdfDataExtractorViewModel}">
+    <hc:BusyIndicator IsBusy="{Binding IsBusy}">
+        <hc:BusyIndicator.BusyContent>
+            <TextBlock Text="{Binding BusyText}" FontWeight="Bold" />
+        </hc:BusyIndicator.BusyContent>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="500*" />
+            </Grid.RowDefinitions>
+            <VirtualizingStackPanel Grid.Row="0">
+                <hc:TextBox Text="{Binding FileNames, UpdateSourceTrigger=PropertyChanged}" Height="100" VerticalScrollBarVisibility="Hidden" TextWrapping="Wrap" AcceptsReturn="True" TextAlignment="Left" HorizontalScrollBarVisibility="Disabled"/>
+                <ToggleButton x:Name="Tgl" IsChecked="False" Style="{StaticResource ToggleButtonSwitch}"
+                              Content="Use coordinates?" />
+            </VirtualizingStackPanel>
+            <VirtualizingStackPanel  Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Import Data" Margin="0,6,6,0" Command="{Binding LoadPdfCommand}"
+                        CommandParameter="{Binding ElementName=Tgl,Path=IsChecked}" IsEnabled="{Binding CanImport}" />
+                <Button Content="Export" Margin="0,6,6,0" Command="{Binding ExportDataCommand}"
+                        IsEnabled="{Binding CanExport}" />
+            </VirtualizingStackPanel>
+
+            <ListView ItemsSource="{Binding Students}" Grid.Row="2">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" Width="auto" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="Father's Name" Width="auto" DisplayMemberBinding="{Binding FatherName}" />
+                        <GridViewColumn Header="Mother's Name" Width="auto" DisplayMemberBinding="{Binding MotherName}" />
+                        <GridViewColumn Header="Roll No." Width="auto" DisplayMemberBinding="{Binding RollNo}" />
+                        <GridViewColumn Header="Enrollment No." Width="auto"
+                                        DisplayMemberBinding="{Binding EnrollmentNo}" />
+                        <GridViewColumn Header="Result" Width="auto" DisplayMemberBinding="{Binding Result}" />
+                        <GridViewColumn Header="SGPA" Width="auto" DisplayMemberBinding="{Binding Sgpa}" />
+                        <GridViewColumn Header="CGPA" Width="auto" DisplayMemberBinding="{Binding Cgpa}" />
+                        <GridViewColumn Header="Result Date" Width="auto" DisplayMemberBinding="{Binding ResultDate}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </Grid>
+    </hc:BusyIndicator>
+</UserControl>

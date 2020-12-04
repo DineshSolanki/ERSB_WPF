@@ -1,0 +1,87 @@
+﻿<UserControl x:Class="ERSB.Views.DataManagement"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"       
+             xmlns:viewModels="clr-namespace:ERSB.ViewModels"
+             xmlns:hc="https://handyorg.github.io/handycontrol"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+             hc:GlobalShortcut.Host="True"
+             prism:ViewModelLocator.AutoWireViewModel="True" d:DataContext="{d:DesignInstance viewModels:DataManagementViewModel }">
+    <hc:GlobalShortcut.KeyBindings>
+        <KeyBinding Modifiers="Ctrl+Alt" Key="A" Command="{Binding AddRollNoCommand}"/>
+        <KeyBinding Modifiers="Control+Alt" Key="C" Command="{Binding ClearListCommand}"/>
+        <KeyBinding Modifiers="Control+Alt" Key="D" Command="{Binding DeleteFileCommand}"/>
+        <KeyBinding Modifiers="Control+Alt" Key="D" Command="{Binding DeleteAllFilesCommand}" />
+        <KeyBinding Modifiers="Control+Alt" Key="S" Command="{Binding SaveFileCommand}"/>
+    </hc:GlobalShortcut.KeyBindings>
+    <Border Effect="{StaticResource EffectShadow4}" Background="{DynamicResource RegionBrush}" Margin="20" CornerRadius="16">
+        <Border Margin="0" CornerRadius="16">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" Margin="6,0,6,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                        <RowDefinition Height="auto"/>
+                    </Grid.RowDefinitions>
+                    <hc:ComboBox x:Name="CmbClassName" Grid.Row="0" ItemsSource="{Binding ClassNames}" hc:TitleElement.Title="Class Name :" SelectedIndex="0" IsEditable="True">
+                        <hc:Interaction.Triggers>
+                            <hc:EventTrigger EventName="SelectionChanged">
+                                <hc:InvokeCommandAction Command="{Binding OnSelectionChanged}" CommandParameter="{Binding ElementName=CmbClassName, Path=SelectedItem}"/>
+                            </hc:EventTrigger>
+                        </hc:Interaction.Triggers>
+                    </hc:ComboBox>
+                    <ToggleButton Grid.Row="1" x:Name="ChkAutoGenerate" Style="{StaticResource ToggleButtonSwitch}" Content="Auto Generate" IsChecked="True"/>
+                    <hc:ToggleBlock Grid.Row="2" IsChecked="{Binding ElementName= ChkAutoGenerate,Path=IsChecked}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch">
+                        <hc:ToggleBlock.UnCheckedContent>
+                            <hc:TextBox Text="{Binding NewRollNo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" hc:InfoElement.Placeholder="Enter Roll No." hc:TitleElement.Title="Roll Number :"/>
+                        </hc:ToggleBlock.UnCheckedContent>
+                        <hc:ToggleBlock.CheckedContent>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <hc:TextBox Grid.Row="0" Text="{Binding StartRollNo, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" hc:TitleElement.Title="Starting Roll Number :" hc:InfoElement.Placeholder="eg: 19HWR001"/>
+                                <hc:TextBox Grid.Row="1" Text="{Binding EndRollNo ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" hc:TitleElement.Title="Ending Roll Number :" hc:InfoElement.Placeholder="eg: 19HWR020"/>
+                            </Grid>
+                        </hc:ToggleBlock.CheckedContent>
+                    </hc:ToggleBlock>
+                    <Grid Grid.Row="3">
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Button Grid.Row="0" Grid.Column="0"  Style="{StaticResource ButtonPrimary}" Content="Add Roll Number(s) ->"  Margin="0,6,0,0" Command="{Binding AddRollNoCommand}" CommandParameter="{Binding ElementName=ChkAutoGenerate, Path=IsChecked}"/>
+                        <Button Grid.Row="0" Grid.Column="1"  Style="{StaticResource ButtonDanger}" Content="Clear List !"  Margin="6,6,0,0" Command="{Binding ClearListCommand}"/>
+                        <Button Grid.Row="1" Grid.Column="0"  Style="{StaticResource ButtonDanger}" Content="Delete File"  Margin="6,6,0,0" Command="{Binding DeleteFileCommand}" CommandParameter="{Binding ElementName=CmbClassName,Path=SelectedItem}"/>
+                        <Button Grid.Row="1" Grid.Column="1"  Style="{StaticResource ButtonDanger}" Content="Delete all files !"  Margin="6,6,0,0" Command="{Binding DeleteAllFilesCommand}"/>
+                    </Grid>
+                    
+                    <Button Grid.Row="4" Style="{StaticResource ButtonSuccess}" Content="Save"  Margin="0,6,0,0" Command="{Binding SaveFileCommand}" CommandParameter="{Binding ElementName=CmbClassName, Path=Text}" HorizontalAlignment="Stretch"/>
+                
+                </Grid>
+                <ListBox x:Name="LstRollNo" Grid.Column="1" hc:ListBoxAttach.IsOddEvenRow="True" AlternationCount="2" Style="{StaticResource ListBoxModernStyle}" ItemsSource="{Binding RollNumbers}" HorizontalAlignment="Stretch" SelectionMode="Extended">
+                    <i:Interaction.Triggers>
+                        <i:KeyTrigger Key="Delete">
+                            <i:InvokeCommandAction CommandParameter="{Binding ElementName=LstRollNo, Path=SelectedItems}" Command="{Binding KeyPressRollNumbersListCommand}" />
+                        </i:KeyTrigger>
+                    </i:Interaction.Triggers>
+                </ListBox>
+            </Grid>
+        </Border>
+    </Border>
+    
+</UserControl>
