@@ -55,7 +55,7 @@ namespace ERSB.ViewModels
         private void DeleteAllFiles()
         {
             var count = 0;
-            var cNames = ClassNames.ToList();
+            var cNames = ClassNames;
             foreach (var fileName in cNames)
             {
                 var fullFilePath = fileName.CreateCsvFilePath();
@@ -74,7 +74,7 @@ namespace ERSB.ViewModels
                 MessageBox.Error("File does not exist!", "File Deletion");
                 return;
             }
-            if (fileName.Equals("default", StringComparison.Ordinal))
+            if (fileName.Equals("default",StringComparison.Ordinal))
             {
                 MessageBox.Warning("Default file can't be deleted.", "File Deletion");
                 return;
@@ -124,7 +124,7 @@ namespace ERSB.ViewModels
                 MessageBox.Info("Please enter a class name.", "No class name!");
                 return;
             }
-            if (RollNumbers.Count == 0)
+            if (RollNumbers.Count==0)
             {
                 MessageBox.Info("Please Add Roll Number(s).");
                 return;
@@ -161,8 +161,8 @@ namespace ERSB.ViewModels
                 }
                 var staticStr = Util.GetStaticString(StartRollNo, EndRollNo);
                 var endIndex = staticStr.Length == 0 ? 0 : staticStr.Length - 1;
-                var firstValue = Convert.ToInt32(StartRollNo.Remove(0, endIndex), CultureInfo.InvariantCulture);
-                var secondValue = Convert.ToInt32(EndRollNo.Remove(0, endIndex), CultureInfo.InvariantCulture);
+                var firstValue = Convert.ToInt32(StartRollNo.Remove(0, endIndex),CultureInfo.InvariantCulture);
+                var secondValue = Convert.ToInt32(EndRollNo.Remove(0, endIndex),CultureInfo.InvariantCulture);
                 var outArray = Util.Generate(firstValue, secondValue);
                 foreach (var s in outArray)
                 {
