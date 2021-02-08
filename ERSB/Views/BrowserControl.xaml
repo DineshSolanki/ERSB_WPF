@@ -5,16 +5,21 @@
              xmlns:wv2="clr-namespace:Microsoft.Web.WebView2.Wpf;assembly=Microsoft.Web.WebView2.Wpf"
              xmlns:hc="https://handyorg.github.io/handycontrol"
              prism:ViewModelLocator.AutoWireViewModel="True">
-    <hc:BusyIndicator Name="BusyIndicator1" BusyContent="Working" ProgressBarStyle="{DynamicResource ProgressBarFlat}" TextOptions.TextFormattingMode="Display">
+    <hc:BusyIndicator Name="BusyIndicator1" ProgressBarStyle="{DynamicResource ProgressBarFlat}" TextOptions.TextFormattingMode="Display">
+        <hc:BusyIndicator.BusyContent>
+            <StackPanel>
+                <TextBlock Name="txtBusyText" Text="Warming up..." FontWeight="Bold" />
+                <Button Content="Cancel" HorizontalAlignment="Center" VerticalAlignment="Top" Click="Button_Click"/>
+            </StackPanel>
+        </hc:BusyIndicator.BusyContent>
         <hc:BusyIndicator.Content>
             <DockPanel>
                 <DockPanel DockPanel.Dock="Top">
                     <Button x:Name="BtnScrap" Style="{StaticResource ButtonPrimary}" DockPanel.Dock="Right" Content="Start Scrapping" Click="BtnScrap_Click"/>
-                    <hc:ComboBox x:Name="CmbFileNames" ItemsSource="{Binding FileNames,UpdateSourceTrigger=PropertyChanged}" SelectedIndex="0" DockPanel.Dock="Left"/>
+                    <hc:ComboBox x:Name="CmbFileNames" ItemsSource="{Binding FileNames,UpdateSourceTrigger=PropertyChanged}" SelectedIndex="0" DockPanel.Dock="Left" HorizontalContentAlignment="Center"/>
                 </DockPanel>
-                <wv2:WebView2 Name = "WebView"
-                  Source = "https://jnvuiums.in/(S(sthxe5m4byyx0qxscaokkfdx))/Results/ExamResultDeclare.aspx"
-                CoreWebView2Ready="webView_CoreWebView2Ready" />
+                <wv2:WebView2 x:Name="WebView"
+                  Source = "https://jnvuiums.in/(S(sthxe5m4byyx0qxscaokkfdx))/Results/ExamResultDeclare.aspx" CoreWebView2InitializationCompleted="WebView_CoreWebView2Ready" />
             </DockPanel>
         </hc:BusyIndicator.Content>
     </hc:BusyIndicator>

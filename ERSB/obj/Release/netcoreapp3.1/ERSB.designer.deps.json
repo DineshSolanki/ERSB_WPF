@@ -1,0 +1,443 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "CsvHelper/17.0.1": {
+        "dependencies": {
+          "Microsoft.CSharp": "4.5.0"
+        },
+        "runtime": {
+          "lib/netstandard2.1/CsvHelper.dll": {
+            "assemblyVersion": "17.0.0.0",
+            "fileVersion": "17.0.1.0"
+          }
+        }
+      },
+      "DryIoc.dll/4.5.0": {
+        "dependencies": {
+          "System.Reflection.Emit.Lightweight": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard2.0/DryIoc.dll": {
+            "assemblyVersion": "4.5.0.0",
+            "fileVersion": "4.5.0.0"
+          }
+        }
+      },
+      "GemBox.Pdf/15.0.1033": {
+        "runtime": {
+          "lib/netcoreapp3.0/GemBox.Pdf.dll": {
+            "assemblyVersion": "15.0.0.1033",
+            "fileVersion": "15.0.300.1033"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp3.0/GemBox.Pdf.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "15.0.0.1033",
+            "fileVersion": "15.0.200.1033"
+          }
+        }
+      },
+      "GemBox.Spreadsheet/47.0.1044": {
+        "runtime": {
+          "lib/netcoreapp3.1/GemBox.Spreadsheet.dll": {
+            "assemblyVersion": "47.0.0.1044",
+            "fileVersion": "47.0.310.1044"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/unix/lib/netcoreapp3.1/GemBox.Spreadsheet.dll": {
+            "rid": "unix",
+            "assetType": "runtime",
+            "assemblyVersion": "47.0.0.1044",
+            "fileVersion": "47.0.200.1044"
+          }
+        }
+      },
+      "HandyControls/3.0.0": {
+        "runtime": {
+          "lib/netcoreapp3.1/HandyControl.dll": {
+            "assemblyVersion": "3.0.0.0",
+            "fileVersion": "3.0.0.0"
+          }
+        },
+        "resources": {
+          "lib/netcoreapp3.1/ca-ES/HandyControl.resources.dll": {
+            "locale": "ca-ES"
+          },
+          "lib/netcoreapp3.1/en/HandyControl.resources.dll": {
+            "locale": "en"
+          },
+          "lib/netcoreapp3.1/fa/HandyControl.resources.dll": {
+            "locale": "fa"
+          },
+          "lib/netcoreapp3.1/fr/HandyControl.resources.dll": {
+            "locale": "fr"
+          },
+          "lib/netcoreapp3.1/ko-KR/HandyControl.resources.dll": {
+            "locale": "ko-KR"
+          },
+          "lib/netcoreapp3.1/pt-BR/HandyControl.resources.dll": {
+            "locale": "pt-BR"
+          },
+          "lib/netcoreapp3.1/ru/HandyControl.resources.dll": {
+            "locale": "ru"
+          },
+          "lib/netcoreapp3.1/tr/HandyControl.resources.dll": {
+            "locale": "tr"
+          }
+        }
+      },
+      "Microsoft.CodeAnalysis.FxCopAnalyzers/3.3.1": {
+        "dependencies": {
+          "Microsoft.CodeAnalysis.VersionCheckAnalyzer": "3.3.1",
+          "Microsoft.CodeQuality.Analyzers": "3.3.1",
+          "Microsoft.NetCore.Analyzers": "3.3.1",
+          "Microsoft.NetFramework.Analyzers": "3.3.1"
+        }
+      },
+      "Microsoft.CodeAnalysis.VersionCheckAnalyzer/3.3.1": {},
+      "Microsoft.CodeQuality.Analyzers/3.3.1": {},
+      "Microsoft.CSharp/4.5.0": {},
+      "Microsoft.NetCore.Analyzers/3.3.1": {},
+      "Microsoft.NETCore.Platforms/1.1.0": {},
+      "Microsoft.NETCore.Targets/1.1.0": {},
+      "Microsoft.NetFramework.Analyzers/3.3.1": {},
+      "Microsoft.Web.WebView2/1.0.674-prerelease": {
+        "runtime": {
+          "lib/netcoreapp3.0/Microsoft.Web.WebView2.Core.dll": {
+            "assemblyVersion": "1.0.674.0",
+            "fileVersion": "1.0.674.0"
+          },
+          "lib/netcoreapp3.0/Microsoft.Web.WebView2.WinForms.dll": {
+            "assemblyVersion": "1.0.674.0",
+            "fileVersion": "1.0.674.0"
+          },
+          "lib/netcoreapp3.0/Microsoft.Web.WebView2.Wpf.dll": {
+            "assemblyVersion": "1.0.674.0",
+            "fileVersion": "1.0.674.0"
+          }
+        },
+        "runtimeTargets": {
+          "runtimes/win-arm/native/WebView2Loader.dll": {
+            "rid": "win-arm",
+            "assetType": "native",
+            "fileVersion": "1.0.674.0"
+          },
+          "runtimes/win-x64/native/WebView2Loader.dll": {
+            "rid": "win-x64",
+            "assetType": "native",
+            "fileVersion": "1.0.674.0"
+          },
+          "runtimes/win-x86/native/WebView2Loader.dll": {
+            "rid": "win-x86",
+            "assetType": "native",
+            "fileVersion": "1.0.674.0"
+          }
+        }
+      },
+      "Microsoft.Xaml.Behaviors.Wpf/1.1.19": {
+        "runtime": {
+          "lib/netcoreapp3.0/Microsoft.Xaml.Behaviors.dll": {
+            "assemblyVersion": "1.1.0.0",
+            "fileVersion": "1.1.19.35512"
+          }
+        }
+      },
+      "Prism.Core/8.0.0.1909": {
+        "runtime": {
+          "lib/netstandard2.0/Prism.dll": {
+            "assemblyVersion": "8.0.0.1909",
+            "fileVersion": "8.0.0.1909"
+          }
+        }
+      },
+      "Prism.DryIoc/8.0.0.1909": {
+        "dependencies": {
+          "DryIoc.dll": "4.5.0",
+          "Prism.Wpf": "8.0.0.1909"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Prism.DryIoc.Wpf.dll": {
+            "assemblyVersion": "8.0.0.1909",
+            "fileVersion": "8.0.0.1909"
+          }
+        }
+      },
+      "Prism.Wpf/8.0.0.1909": {
+        "dependencies": {
+          "Microsoft.Xaml.Behaviors.Wpf": "1.1.19",
+          "Prism.Core": "8.0.0.1909"
+        },
+        "runtime": {
+          "lib/netcoreapp3.1/Prism.Wpf.dll": {
+            "assemblyVersion": "8.0.0.1909",
+            "fileVersion": "8.0.0.1909"
+          }
+        }
+      },
+      "System.IO/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0",
+          "System.Text.Encoding": "4.3.0",
+          "System.Threading.Tasks": "4.3.0"
+        }
+      },
+      "System.Reflection/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.IO": "4.3.0",
+          "System.Reflection.Primitives": "4.3.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
+      "System.Reflection.Emit.ILGeneration/4.3.0": {
+        "dependencies": {
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Primitives": "4.3.0",
+          "System.Runtime": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Reflection.Emit.ILGeneration.dll": {
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.6.24705.1"
+          }
+        }
+      },
+      "System.Reflection.Emit.Lightweight/4.3.0": {
+        "dependencies": {
+          "System.Reflection": "4.3.0",
+          "System.Reflection.Emit.ILGeneration": "4.3.0",
+          "System.Reflection.Primitives": "4.3.0",
+          "System.Runtime": "4.3.0"
+        },
+        "runtime": {
+          "lib/netstandard1.3/System.Reflection.Emit.Lightweight.dll": {
+            "assemblyVersion": "4.0.2.0",
+            "fileVersion": "4.6.24705.1"
+          }
+        }
+      },
+      "System.Reflection.Primitives/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
+      "System.Runtime/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0"
+        }
+      },
+      "System.Text.Encoding/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        }
+      },
+      "System.Threading.Tasks/4.3.0": {
+        "dependencies": {
+          "Microsoft.NETCore.Platforms": "1.1.0",
+          "Microsoft.NETCore.Targets": "1.1.0",
+          "System.Runtime": "4.3.0"
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CsvHelper/17.0.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ch+ir0GHSWOH0KVLC9f+iTIIwapqtId8f/X2hXT6F89QN0tkEGd6U6zbOmh+oemnMZjmfHoZQXcf5AJafQkW9g==",
+      "path": "csvhelper/17.0.1",
+      "hashPath": "csvhelper.17.0.1.nupkg.sha512"
+    },
+    "DryIoc.dll/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-FMwI/UHyc8utEwInluduwVcdYEocbuAtNjW2bCAdWnhYsaIhlIihotDh5PYoyUn/Ms4+U7QbGdE2MwR3wzxQgg==",
+      "path": "dryioc.dll/4.5.0",
+      "hashPath": "dryioc.dll.4.5.0.nupkg.sha512"
+    },
+    "GemBox.Pdf/15.0.1033": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ojBeVXXI8nhoACCPZmOh8ikEQd0/sLLaoycfFeKXcgZXYax7vw/Rl4vedNw9SReAiqZ4GoHT7eIC6ZKVGciCqg==",
+      "path": "gembox.pdf/15.0.1033",
+      "hashPath": "gembox.pdf.15.0.1033.nupkg.sha512"
+    },
+    "GemBox.Spreadsheet/47.0.1044": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-TPuApExUvK2a6ElKs04iiKieAyDISYojcH2jbKxZ5m6OE8bM9ilAW7wLXuGNxeJeElMPT6vhWf1hUtV8EoqXnw==",
+      "path": "gembox.spreadsheet/47.0.1044",
+      "hashPath": "gembox.spreadsheet.47.0.1044.nupkg.sha512"
+    },
+    "HandyControls/3.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-HjTRNxMvo3aQml95ias/hLg+aibAxdgdcC5uXfJVUmQORyurN8zy8eAeeDTKLBrQ+RobwjLb555PJoz4CyIdfA==",
+      "path": "handycontrols/3.0.0",
+      "hashPath": "handycontrols.3.0.0.nupkg.sha512"
+    },
+    "Microsoft.CodeAnalysis.FxCopAnalyzers/3.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-O6L7wOD6dmytWZr4ulw6wLYk8QmsO/TlBHyWOB2OQKnUm31JGOXEncJjVm8Fw24BDzP22wfsleWFidiNU/DIsA==",
+      "path": "microsoft.codeanalysis.fxcopanalyzers/3.3.1",
+      "hashPath": "microsoft.codeanalysis.fxcopanalyzers.3.3.1.nupkg.sha512"
+    },
+    "Microsoft.CodeAnalysis.VersionCheckAnalyzer/3.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-ZUMf70abtWvwevkLFOlEHDck81oZCsi9jBHODDSSH2YPQdtCKzeQfaWWnAmn2ii7N3Q2V2arOj4Mu8ZTTSs3PA==",
+      "path": "microsoft.codeanalysis.versioncheckanalyzer/3.3.1",
+      "hashPath": "microsoft.codeanalysis.versioncheckanalyzer.3.3.1.nupkg.sha512"
+    },
+    "Microsoft.CodeQuality.Analyzers/3.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-h6o+zBUf47OFarRQn6LjwUNFvRUyUWLWcnunw6vLCxSDBmgPDQCsrsWpEtMz/+NKBvOeikVJobscarx3Wgtbiw==",
+      "path": "microsoft.codequality.analyzers/3.3.1",
+      "hashPath": "microsoft.codequality.analyzers.3.3.1.nupkg.sha512"
+    },
+    "Microsoft.CSharp/4.5.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
+      "path": "microsoft.csharp/4.5.0",
+      "hashPath": "microsoft.csharp.4.5.0.nupkg.sha512"
+    },
+    "Microsoft.NetCore.Analyzers/3.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8Ez3EImhFioAsB4bR2bBLA3Pkcz8K/VI6jPdnm98nLu+rodZU8s8QRjRnkrQEnC6VcVAVZJ8W7DL9yrfDsgjqQ==",
+      "path": "microsoft.netcore.analyzers/3.3.1",
+      "hashPath": "microsoft.netcore.analyzers.3.3.1.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Platforms/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-kz0PEW2lhqygehI/d6XsPCQzD7ff7gUJaVGPVETX611eadGsA3A877GdSlU0LRVMCTH/+P3o2iDTak+S08V2+A==",
+      "path": "microsoft.netcore.platforms/1.1.0",
+      "hashPath": "microsoft.netcore.platforms.1.1.0.nupkg.sha512"
+    },
+    "Microsoft.NETCore.Targets/1.1.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
+      "path": "microsoft.netcore.targets/1.1.0",
+      "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
+    },
+    "Microsoft.NetFramework.Analyzers/3.3.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-EI5Afqt03Kq4Wy5Ot6nGvnwunisM9ORi5L9fteCCOK1Wh283wAhM1dIOWOsBN3jlFbw1VTeVPR8oPz9J9xlHLw==",
+      "path": "microsoft.netframework.analyzers/3.3.1",
+      "hashPath": "microsoft.netframework.analyzers.3.3.1.nupkg.sha512"
+    },
+    "Microsoft.Web.WebView2/1.0.674-prerelease": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Q1XaHIHQ6g43w40LMu/cMI3Egw/IL8A8Pcgi4vZyNNxe6C699m+tXzt2X9BlmsDeVmbv68BSJcs/u5NCBubsIw==",
+      "path": "microsoft.web.webview2/1.0.674-prerelease",
+      "hashPath": "microsoft.web.webview2.1.0.674-prerelease.nupkg.sha512"
+    },
+    "Microsoft.Xaml.Behaviors.Wpf/1.1.19": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5sPWkbqImc2t1aQwIfJcKsUo7tOg1Tr8+6xVzZJB56Nzt4u9NlpcLofgdX/aRYpPKdWDA3U23Akw1KQzU5e82g==",
+      "path": "microsoft.xaml.behaviors.wpf/1.1.19",
+      "hashPath": "microsoft.xaml.behaviors.wpf.1.1.19.nupkg.sha512"
+    },
+    "Prism.Core/8.0.0.1909": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Ri+iSFvJiSKYdui7qtxi3uH9NImSZ8Jl/nOosxScSJseFwAc8Lz63JLXoqSAQglcX13DzZcAMzpKNuA9rCFiJg==",
+      "path": "prism.core/8.0.0.1909",
+      "hashPath": "prism.core.8.0.0.1909.nupkg.sha512"
+    },
+    "Prism.DryIoc/8.0.0.1909": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-6o6saaXGSEso4xl2F2x5joOOzkSy01osdR9pPoTeXNQTRKIl+tso/4afxQ2ftH75oqfdZGTzjuS5kLgmBKl8ng==",
+      "path": "prism.dryioc/8.0.0.1909",
+      "hashPath": "prism.dryioc.8.0.0.1909.nupkg.sha512"
+    },
+    "Prism.Wpf/8.0.0.1909": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-RAIMvKo/CMcyHqFKXuHk4sU3HpdZgzf3xh885VJQ3HzgY5g4NtRdZalvQr87tmJ8ptMY/e5PSZhiJ9RTcuXPpQ==",
+      "path": "prism.wpf/8.0.0.1909",
+      "hashPath": "prism.wpf.8.0.0.1909.nupkg.sha512"
+    },
+    "System.IO/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-3qjaHvxQPDpSOYICjUoTsmoq5u6QJAFRUITgeT/4gqkF1bajbSmb1kwSxEA8AHlofqgcKJcM8udgieRNhaJ5Cg==",
+      "path": "system.io/4.3.0",
+      "hashPath": "system.io.4.3.0.nupkg.sha512"
+    },
+    "System.Reflection/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KMiAFoW7MfJGa9nDFNcfu+FpEdiHpWgTcS2HdMpDvt9saK3y/G4GwprPyzqjFH9NTaGPQeWNHU+iDlDILj96aQ==",
+      "path": "system.reflection/4.3.0",
+      "hashPath": "system.reflection.4.3.0.nupkg.sha512"
+    },
+    "System.Reflection.Emit.ILGeneration/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-59tBslAk9733NXLrUJrwNZEzbMAcu8k344OYo+wfSVygcgZ9lgBdGIzH/nrg3LYhXceynyvTc8t5/GD4Ri0/ng==",
+      "path": "system.reflection.emit.ilgeneration/4.3.0",
+      "hashPath": "system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512"
+    },
+    "System.Reflection.Emit.Lightweight/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-oadVHGSMsTmZsAF864QYN1t1QzZjIcuKU3l2S9cZOwDdDueNTrqq1yRj7koFfIGEnKpt6NjpL3rOzRhs4ryOgA==",
+      "path": "system.reflection.emit.lightweight/4.3.0",
+      "hashPath": "system.reflection.emit.lightweight.4.3.0.nupkg.sha512"
+    },
+    "System.Reflection.Primitives/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-5RXItQz5As4xN2/YUDxdpsEkMhvw3e6aNveFXUn4Hl/udNTCNhnKp8lT9fnc3MhvGKh1baak5CovpuQUXHAlIA==",
+      "path": "system.reflection.primitives/4.3.0",
+      "hashPath": "system.reflection.primitives.4.3.0.nupkg.sha512"
+    },
+    "System.Runtime/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JufQi0vPQ0xGnAczR13AUFglDyVYt4Kqnz1AZaiKZ5+GICq0/1MH/mO/eAJHt/mHW1zjKBJd7kV26SrxddAhiw==",
+      "path": "system.runtime/4.3.0",
+      "hashPath": "system.runtime.4.3.0.nupkg.sha512"
+    },
+    "System.Text.Encoding/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-BiIg+KWaSDOITze6jGQynxg64naAPtqGHBwDrLaCtixsa5bKiR8dpPOHA7ge3C0JJQizJE+sfkz1wV+BAKAYZw==",
+      "path": "system.text.encoding/4.3.0",
+      "hashPath": "system.text.encoding.4.3.0.nupkg.sha512"
+    },
+    "System.Threading.Tasks/4.3.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-LbSxKEdOUhVe8BezB/9uOGGppt+nZf6e1VFyw6v3DN6lqitm0OSn2uXMOdtP0M3W4iMcqcivm2J6UgqiwwnXiA==",
+      "path": "system.threading.tasks/4.3.0",
+      "hashPath": "system.threading.tasks.4.3.0.nupkg.sha512"
+    }
+  }
+}
