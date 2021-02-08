@@ -15,9 +15,9 @@ namespace ERSB.Views
 
         private void ButtonSkins_OnClick(object sender, RoutedEventArgs e)
         {
-            if (!(e.OriginalSource is Button button) || !(button.Tag is SkinType tag)) return;
+            if (e.OriginalSource is not Button button || button.Tag is null) return;
             PopupConfig.IsOpen = false;
-            ((App)Application.Current).UpdateSkin(tag);
+            ((App)Application.Current).UpdateSkin(button.Tag.ToString());
         }
         #endregion
     }

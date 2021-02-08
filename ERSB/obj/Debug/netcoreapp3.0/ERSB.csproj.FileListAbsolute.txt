@@ -1,0 +1,10 @@
+C:\Users\Drona\source\repos\ERSB\ERSB\obj\Debug\netcoreapp3.0\ERSB.csprojAssemblyReference.cache
+C:\Users\Drona\source\repos\ERSB\ERSB\obj\Debug\netcoreapp3.0\Properties\DesignTimeResources.baml
+C:\Users\Drona\source\repos\ERSB\ERSB\obj\Debug\netcoreapp3.0\ERSB_MarkupCompile.cache
+C:\Users\Drona\source\repos\ERSB\ERSB\obj\Debug\netcoreapp3.0\Views\MainWindow.baml
+C:\Users\Drona\source\repos\ERSB\ERSB\obj\Debug\netcoreapp3.0\App.baml
+C:\Users\Drona\source\repos\ERSB\ERSB\obj\Debug\netcoreapp3.0\Views\MainWindow.g.cs
+C:\Users\Drona\source\repos\ERSB\ERSB\obj\Debug\netcoreapp3.0\App.g.cs
+C:\Users\Drona\source\repos\ERSB\ERSB\obj\Debug\netcoreapp3.0\ERSB.g.resources
+C:\Users\Drona\source\repos\ERSB\ERSB\obj\Debug\netcoreapp3.0\ERSB.AssemblyInfoInputs.cache
+C:\Users\Drona\source\repos\ERSB\ERSB\obj\Debug\netcoreapp3.0\ERSB.AssemblyInfo.cs

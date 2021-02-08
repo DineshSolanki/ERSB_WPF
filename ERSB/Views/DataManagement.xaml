@@ -6,15 +6,18 @@
              xmlns:hc="https://handyorg.github.io/handycontrol"
              xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:local="clr-namespace:ERSB.Models" mc:Ignorable="d"
              hc:GlobalShortcut.Host="True"
              prism:ViewModelLocator.AutoWireViewModel="True" d:DataContext="{d:DesignInstance viewModels:DataManagementViewModel }">
+    <UserControl.Resources>
+        <local:BindingProxy x:Key="proxy" Data="{Binding}" />
+    </UserControl.Resources>
     <hc:GlobalShortcut.KeyBindings>
-        <KeyBinding Modifiers="Ctrl+Alt" Key="A" Command="{Binding AddRollNoCommand}"/>
-        <KeyBinding Modifiers="Control+Alt" Key="C" Command="{Binding ClearListCommand}"/>
-        <KeyBinding Modifiers="Control+Alt" Key="D" Command="{Binding DeleteFileCommand}"/>
-        <KeyBinding Modifiers="Control+Alt" Key="D" Command="{Binding DeleteAllFilesCommand}" />
-        <KeyBinding Modifiers="Control+Alt" Key="S" Command="{Binding SaveFileCommand}"/>
+        <KeyBinding Modifiers="Ctrl+Alt" Key="A" Command="{Binding Data.AddRollNoCommand, Source={StaticResource proxy}}"/>
+        <KeyBinding Modifiers="Control+Alt" Key="C" Command="{Binding Data.ClearListCommand, Source={StaticResource proxy}}"/>
+        <KeyBinding Modifiers="Control+Alt" Key="D" Command="{Binding Data.DeleteFileCommand, Source={StaticResource proxy}}"/>
+        <KeyBinding Modifiers="Control+Alt" Key="D" Command="{Binding Data.DeleteAllFilesCommand, Source={StaticResource proxy}}" />
+        <KeyBinding Modifiers="Control+Alt" Key="S" Command="{Binding Data.SaveFileCommand, Source={StaticResource proxy}}"/>
     </hc:GlobalShortcut.KeyBindings>
     <Border Effect="{StaticResource EffectShadow4}" Background="{DynamicResource RegionBrush}" Margin="20" CornerRadius="16">
         <Border Margin="0" CornerRadius="16">

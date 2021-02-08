@@ -10,6 +10,7 @@ using GemBox.Pdf;
 using GemBox.Spreadsheet;
 using HandyControl.Controls;
 using Window = System.Windows.Window;
+using System.Windows.Media;
 
 namespace ERSB
 {
@@ -33,15 +34,18 @@ namespace ERSB
             containerRegistry.RegisterForNavigation<DataManagement>();
             containerRegistry.RegisterForNavigation<pdfDataExtractor>();
         }
-        internal void UpdateSkin(SkinType skin)
+        internal void UpdateSkin(string skin)
         {
-            SharedResourceDictionary.SharedDictionaries.Clear();
-            Resources.MergedDictionaries.Add(ResourceHelper.GetSkin(skin));
-            Resources.MergedDictionaries.Add(new ResourceDictionary
+            switch (skin)
             {
-                Source = new Uri("pack://application:,,,/HandyControl;component/Themes/Theme.xaml")
-            });
-            Current.MainWindow?.OnApplyTemplate();
+                case "Dark":
+                    ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
+                    break;
+                case "Default":
+                    ThemeManager.Current.ApplicationTheme = ApplicationTheme.Light;
+                    break;
+            }
+            //ThemeManager.Current.AccentColor = Brushes.Red;
         }
     }
 }

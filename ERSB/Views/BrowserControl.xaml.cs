@@ -21,10 +21,10 @@ namespace ERSB.Views
         private string _selectedRollFile;
         private List<string> _rollNumbers;
         private int _index;
-
+        private bool _cancelDownload;
         private string BusyText
         {
-            set => BusyIndicator1.BusyContent = value;
+            set => txtBusyText.Text = value;
         }
 
         private bool IsBusy
@@ -42,7 +42,7 @@ namespace ERSB.Views
             set
             {
                 _completedDownloads = value;
-                if ((value != 0) && value == _totalValidRoll)
+                if ((value != 0) && value >= _totalValidRoll)
                     StartScrapping();
             }
         }
@@ -52,7 +52,8 @@ namespace ERSB.Views
         {
             InitializeComponent();
         }
-        private void webView_CoreWebView2Ready(object sender, System.EventArgs e)
+      
+        private void WebView_CoreWebView2Ready(object sender, System.EventArgs e)
         {
             WebView.CoreWebView2.Settings.AreDevToolsEnabled = false;
             WebView.CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = false;
@@ -69,7 +70,7 @@ namespace ERSB.Views
                 BusyText = "Downloading result of Roll Number: " +
                             $"{_rollNumbers[_index]}...";
                 _index++;
-                if (_index < _rollNumbers.Count)
+                if (_index < _rollNumbers.Count && !_cancelDownload)
                     await ExecuteScript(_rollNumbers[_index]);
 
                 Debug.WriteLine(e.ParameterObjectAsJson);
@@ -167,5 +168,10 @@ namespace ERSB.Views
             if (File.Exists(fileName)) Process.Start(new ProcessStartInfo(fileName) { UseShellExecute = true });
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            _cancelDownload =true;
+            StartScrapping();
+        }
     }
 }
