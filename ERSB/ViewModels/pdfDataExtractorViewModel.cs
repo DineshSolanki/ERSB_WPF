@@ -100,6 +100,8 @@ namespace ERSB.ViewModels
         }
         private async void ExportToExcel()
         {
+
+
             var saveFileDialog = new SaveFileDialog
             {
                 AddExtension = true,
@@ -113,7 +115,7 @@ namespace ERSB.ViewModels
             await Task.Run(() =>
             {
                 var dt = Students.ToDataTable();
-                
+
                 var workbook = new ExcelFile();
                 var worksheet = workbook.Worksheets.Add("ERSB");
                 worksheet.InsertDataTable(dt, new InsertDataTableOptions { ColumnHeaders = true });

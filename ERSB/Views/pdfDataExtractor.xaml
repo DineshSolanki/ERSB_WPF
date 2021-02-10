@@ -15,14 +15,14 @@
         <hc:BusyIndicator.BusyContent>
             <TextBlock Text="{Binding BusyText}" FontWeight="Bold" />
         </hc:BusyIndicator.BusyContent>
-        <Grid>
+        <Grid AllowDrop="True" modules:FolderDragDropHelper.IsFileDragDropEnabled="True" modules:FolderDragDropHelper.FileDragDropTarget="{Binding}">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
                 <RowDefinition Height="50" />
                 <RowDefinition Height="500*" />
             </Grid.RowDefinitions>
-            <VirtualizingStackPanel Grid.Row="0">
-                <hc:TextBox AllowDrop="True" Text="{Binding FileNames, UpdateSourceTrigger=PropertyChanged}" Height="100" VerticalScrollBarVisibility="Hidden" TextWrapping="Wrap" AcceptsReturn="True" TextAlignment="Left" HorizontalScrollBarVisibility="Disabled"
+            <VirtualizingStackPanel Grid.Row="0" >
+                <hc:TextBox AllowDrop="True" Text="{Binding FileNames, UpdateSourceTrigger=PropertyChanged}" Height="100" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" AcceptsReturn="True" TextAlignment="Left" HorizontalScrollBarVisibility="Disabled"
                            />
                 <ToggleButton x:Name="Tgl" IsChecked="False" Style="{StaticResource ToggleButtonSwitch}"
                               Content="Use coordinates?" />
