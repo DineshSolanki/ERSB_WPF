@@ -1,10 +1,11 @@
-﻿using ERSB.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using ERSB.Models;
 
 namespace ERSB.Modules
 {
@@ -61,7 +62,7 @@ namespace ERSB.Modules
 
         public static string GetDataFolderPath()
         {
-            var appPath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
             var path = Path.Combine(appPath!, "data").Remove(0, 6); //remove "file://"
             if (!Directory.Exists(path))
             {
@@ -73,7 +74,7 @@ namespace ERSB.Modules
 
         /// <summary> 
         /// returns csv file name with given name in data folder of application.
-        /// This does not create acctual file. the file may exist or may not.
+        /// This does not create actual file. the file may exist or may not.
         /// </summary>
         /// <param name="fileName">file name without extension</param>
         /// <returns>full path of the csv file appended with ERSB/Data path. </returns>

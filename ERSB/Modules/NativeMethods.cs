@@ -12,10 +12,10 @@ namespace ERSB.Modules
 
         public static string GetDownloadFolder()
         {
-            IntPtr np = IntPtr.Zero;
+            var np = IntPtr.Zero;
             var downloadsFolder = new Guid("374DE290-123F-4565-9164-39C4925E467B");
             _ = SHGetKnownFolderPath(ref downloadsFolder, 0, IntPtr.Zero, ref np);
-            string path = Marshal.PtrToStringUni(np);
+            var path = Marshal.PtrToStringUni(np);
             Marshal.FreeCoTaskMem(np);
             return path;
         }

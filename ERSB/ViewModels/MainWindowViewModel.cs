@@ -1,7 +1,7 @@
-﻿using Prism.Commands;
+﻿using ERSB.Modules;
+using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
-using ERSB.Modules;
 
 namespace ERSB.ViewModels
 {

@@ -1,15 +1,16 @@
-﻿using CsvHelper;
-using ERSB.Models;
-using ERSB.Modules;
-using Prism.Commands;
-using Prism.Mvvm;
-using Prism.Regions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Windows;
+using CsvHelper;
+using ERSB.Models;
+using ERSB.Modules;
+using Prism.Commands;
+using Prism.Mvvm;
+using Prism.Regions;
 using MessageBox = HandyControl.Controls.MessageBox;
 
 namespace ERSB.ViewModels
@@ -88,7 +89,7 @@ namespace ERSB.ViewModels
         {
             if (MessageBox.Ask("Do you really want to clear the list ?\n" +
                 " (the changes will not be made to the file until you save.)",
-                "Confirm list clear") == System.Windows.MessageBoxResult.OK)
+                "Confirm list clear") == MessageBoxResult.OK)
             {
                 RollNumbers.Clear();
             }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -53,7 +54,7 @@ namespace ERSB.Views
             InitializeComponent();
         }
       
-        private void WebView_CoreWebView2Ready(object sender, System.EventArgs e)
+        private void WebView_CoreWebView2Ready(object sender, EventArgs e)
         {
             
             WebView.CoreWebView2.Settings.AreDevToolsEnabled = false;

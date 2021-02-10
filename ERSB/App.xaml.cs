@@ -1,16 +1,11 @@
-﻿using HandyControl.Data;
-using HandyControl.Themes;
-using HandyControl.Tools;
-using System.Windows;
-using System;
-using Prism.Ioc;
-using ERSB.Views;
-using Prism.Regions;
+﻿using ERSB.Views;
 using GemBox.Pdf;
 using GemBox.Spreadsheet;
 using HandyControl.Controls;
+using HandyControl.Themes;
+using Prism.Ioc;
+using Prism.Regions;
 using Window = System.Windows.Window;
-using System.Windows.Media;
 
 namespace ERSB
 {
@@ -34,17 +29,14 @@ namespace ERSB
             containerRegistry.RegisterForNavigation<DataManagement>();
             containerRegistry.RegisterForNavigation<pdfDataExtractor>();
         }
-        internal void UpdateSkin(string skin)
+        internal static void UpdateSkin(string skin)
         {
-            switch (skin)
+            ThemeManager.Current.ApplicationTheme = skin switch
             {
-                case "Dark":
-                    ThemeManager.Current.ApplicationTheme = ApplicationTheme.Dark;
-                    break;
-                case "Default":
-                    ThemeManager.Current.ApplicationTheme = ApplicationTheme.Light;
-                    break;
-            }
+                "Dark" => ApplicationTheme.Dark,
+                "Default" => ApplicationTheme.Light,
+                _ => ThemeManager.Current.ApplicationTheme
+            };
             //ThemeManager.Current.AccentColor = Brushes.Red;
         }
     }

@@ -1,18 +1,19 @@
-﻿using ERSB.Models;
-using ERSB.Modules;
-using GemBox.Pdf;
-using GemBox.Spreadsheet;
-using HandyControl.Controls;
-using Microsoft.Win32;
-using Prism.Commands;
-using Prism.Mvvm;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows;
+using ERSB.Models;
+using ERSB.Modules;
+using GemBox.Pdf;
+using GemBox.Spreadsheet;
+using Microsoft.Win32;
+using Prism.Commands;
+using Prism.Mvvm;
+using MessageBox = HandyControl.Controls.MessageBox;
 
 namespace ERSB.ViewModels
 {
@@ -90,7 +91,7 @@ namespace ERSB.ViewModels
                     }
 
                     var data = pdfData;
-                    System.Windows.Application.Current.Dispatcher.Invoke(() => collection.Add(data));
+                    Application.Current.Dispatcher.Invoke(() => collection.Add(data));
                 }
             });
             Students = collection;
@@ -130,7 +131,7 @@ namespace ERSB.ViewModels
             });
             IsBusy = false;
             if (MessageBox.Ask("Do you want to open exported file ?",
-                "Export Success") != System.Windows.MessageBoxResult.OK) return;
+                "Export Success") != MessageBoxResult.OK) return;
             if (File.Exists(fileName)) Process.Start(new ProcessStartInfo(fileName) { UseShellExecute = true });
 
 

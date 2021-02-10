@@ -1,16 +1,11 @@
-﻿using CsvHelper;
-using ERSB.Models;
+﻿using System;
+using System.Collections.ObjectModel;
+using System.Windows;
+using System.Windows.Threading;
 using ERSB.Modules;
-using HandyControl.Controls;
 using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Globalization;
-using System.IO;
-using System.Linq;
 
 namespace ERSB.ViewModels
 {
@@ -26,7 +21,7 @@ namespace ERSB.ViewModels
         BrowserControlViewModel(IRegionManager regionManager)
         {
             StartScrappingCommand = new DelegateCommand<string>(StartScrapping);
-            System.Windows.Application.Current.Dispatcher.BeginInvoke(System.Windows.Threading.DispatcherPriority.Send,
+            Application.Current.Dispatcher.BeginInvoke(DispatcherPriority.Send,
                 new Action(() =>
                 {
                     regionManager.Regions["ContentRegion"].PropertyChanged += (s, e) =>
@@ -41,25 +36,25 @@ namespace ERSB.ViewModels
         }
         private void StartScrapping(string fileName)
         {
-            List<string> RollNumbers;
-            var filePath = fileName.CreateCsvFilePath();
-            if (!File.Exists(filePath))
-            {
-                return;
-            }
-
-            using var reader = new StreamReader(filePath);
-            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-            try
-            {
-                var records = csv.GetRecords<RollList>();
-                RollNumbers = new List<string>(records.Select(record => record.RollNumber));
-            }
-            catch (ArgumentNullException ex)
-            {
-                MessageBox.Error(ex.Message, "Exception");
-            }
-            csv.Dispose();
+            // List<string> RollNumbers;
+            // var filePath = fileName.CreateCsvFilePath();
+            // if (!File.Exists(filePath))
+            // {
+            //     return;
+            // }
+            //
+            // using var reader = new StreamReader(filePath);
+            // using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+            // try
+            // {
+            //     var records = csv.GetRecords<RollList>();
+            //     RollNumbers = new List<string>(records.Select(record => record.RollNumber));
+            // }
+            // catch (ArgumentNullException ex)
+            // {
+            //     MessageBox.Error(ex.Message, "Exception");
+            // }
+            // csv.Dispose();
         }
         private void LoadFileNames()
         {

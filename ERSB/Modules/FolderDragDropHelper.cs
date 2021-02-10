@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 
@@ -38,11 +37,8 @@ namespace ERSB.Modules
 
         private static void Control_DragOver(object sender, DragEventArgs e)
         {
-            var dt = e.Data.GetData(DataFormats.FileDrop);
-            var data = (dt as Array)?.GetValue(0)?.ToString();
-            var isDirectory = Directory.Exists(data);
-            var isFile = !isDirectory;
-            e.Effects = isDirectory || isFile ? DragDropEffects.Link : DragDropEffects.None;
+            // e.Data.GetData(DataFormats.FileDrop);
+            e.Effects = DragDropEffects.Link;
             e.Handled = true;
         }
 

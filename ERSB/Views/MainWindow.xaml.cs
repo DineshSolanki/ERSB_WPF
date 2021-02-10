@@ -1,6 +1,6 @@
-﻿using HandyControl.Data;
-using System.Windows;
+﻿using System.Windows;
 using System.Windows.Controls;
+
 namespace ERSB.Views
 {
     public partial class MainWindow
@@ -17,7 +17,7 @@ namespace ERSB.Views
         {
             if (e.OriginalSource is not Button button || button.Tag is null) return;
             PopupConfig.IsOpen = false;
-            ((App)Application.Current).UpdateSkin(button.Tag.ToString());
+            App.UpdateSkin(button.Tag.ToString());
         }
         #endregion
     }

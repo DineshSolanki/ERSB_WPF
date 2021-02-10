@@ -1,15 +1,15 @@
-﻿using CsvHelper;
-using ERSB.Models;
-using GemBox.Pdf;
-using GemBox.Pdf.Content;
-using GemBox.Spreadsheet;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using CsvHelper;
+using ERSB.Models;
+using GemBox.Pdf;
+using GemBox.Pdf.Content;
+using GemBox.Spreadsheet;
 
 namespace ERSB.Modules
 {
@@ -25,6 +25,7 @@ namespace ERSB.Modules
             {
                 throw new InvalidOperationException("Page is empty");
             }
+
             var student = new Student
             {
                 Name = pdfTextContents[pdfTextContents.IndexOf("CANDIDATE'S NAME") + 2],
@@ -37,15 +38,15 @@ namespace ERSB.Modules
                 ResultDate = pdfTextContents[pdfTextContents.IndexOf("RESULT DECLARE DATE : ") + 1]
             };
             if (pdfTextContents[pdfTextContents.IndexOf(student.Sgpa) + 1]!
-                .Contains("*",StringComparison.InvariantCultureIgnoreCase))
+                .Contains("*", StringComparison.InvariantCultureIgnoreCase))
                 student.Sgpa = $"{student.Sgpa}*";
-            student.Cgpa = student.Sgpa!.Contains("*", StringComparison.InvariantCultureIgnoreCase) 
-                ? "" 
+            student.Cgpa = student.Sgpa!.Contains("*", StringComparison.InvariantCultureIgnoreCase)
+                ? ""
                 : pdfTextContents[pdfTextContents.IndexOf("CGPA") + 1];
             if (student.EnrollmentNo == "MOTHER'S NAME")
                 student.EnrollmentNo = string.Empty;
             if (student.Cgpa == "RESULT : ")
-                student.Cgpa =string.Empty;
+                student.Cgpa = string.Empty;
             return student;
         }
 
@@ -79,18 +80,19 @@ namespace ERSB.Modules
             };
             if (string.IsNullOrEmpty(student.Sgpa))
                 student.Sgpa = pdfTextContents.FirstOrDefault(element =>
-                        element.Location == PdfCoordinates.SgpaBack).ToSafeString() + "*";
+                    element.Location == PdfCoordinates.SgpaBack).ToSafeString() + "*";
             return student;
         }
-        public static async         Task
-ExportToExcel(IEnumerable<Student> students,string exportFileName)
+
+        public static async Task
+            ExportToExcel(IEnumerable<Student> students, string exportFileName)
         {
             await Task.Run(() =>
             {
                 var dt = students.ToDataTable();
                 var workbook = new ExcelFile();
                 var worksheet = workbook.Worksheets.Add("ERSB");
-                worksheet.InsertDataTable(dt, new InsertDataTableOptions { ColumnHeaders = true });
+                worksheet.InsertDataTable(dt, new InsertDataTableOptions {ColumnHeaders = true});
                 workbook.DocumentProperties.BuiltIn[BuiltInDocumentProperties.Author] = "ERSB ";
                 for (var i = 0; i < worksheet.CalculateMaxUsedColumns(); ++i)
                     worksheet.Columns[i].AutoFit(1, worksheet.Rows[1], worksheet.Rows[^1]);
@@ -103,12 +105,13 @@ ExportToExcel(IEnumerable<Student> students,string exportFileName)
             var filePath = fileName.CreateCsvFilePath();
             using var reader = new StreamReader(filePath);
             using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-                var records = csv.GetRecords<RollList>();
-                IEnumerable<string> rollNumbers = new List<string>(records.Select(
-                    record => record.RollNumber));
+            var records = csv.GetRecords<RollList>();
+            IEnumerable<string> rollNumbers = new List<string>(records.Select(
+                record => record.RollNumber));
             csv.Dispose();
             return rollNumbers;
         }
+
         public static async Task<IEnumerable<Student>> ExtractDataFromPdfsAsync(string downloadLocation,
             IEnumerable<string> nameOfFiles)
         {
@@ -127,7 +130,7 @@ ExportToExcel(IEnumerable<Student> students,string exportFileName)
                     catch (Exception e)
                     {
                         if (e.Message == "Page is empty")
-                            pdfData = new Student { Name = "PDF is corrupted" };
+                            pdfData = new Student {Name = "PDF is corrupted"};
                         else
                             throw;
                     }
@@ -135,8 +138,8 @@ ExportToExcel(IEnumerable<Student> students,string exportFileName)
                     var data = pdfData;
                     Application.Current.Dispatcher.Invoke(() => students.Add(data));
                 });
-
             }
+
             return students;
         }
     }
