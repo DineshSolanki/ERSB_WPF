@@ -1,4 +1,9 @@
+<a href="https://dineshsolanki.github.io/FoliCon/">
+    <img src="https://github.com/DineshSolanki/Project-Assets/blob/master/ERSB/ersb_logo.svg" alt="ERSB logo" title="FoliCon" align="right" height="300" />
+</a>
+
 # ERSB_WPF
+
 ERSB is JNVU specific Exam Result Scrapper Bot.
 
 <details>
