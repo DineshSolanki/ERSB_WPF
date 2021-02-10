@@ -55,6 +55,7 @@ namespace ERSB.Views
       
         private void WebView_CoreWebView2Ready(object sender, System.EventArgs e)
         {
+            
             WebView.CoreWebView2.Settings.AreDevToolsEnabled = false;
             WebView.CoreWebView2.Settings.AreDefaultScriptDialogsEnabled = false;
             WebView.CoreWebView2.CallDevToolsProtocolMethodAsync("Page.enable", "{}");
@@ -163,11 +164,12 @@ namespace ERSB.Views
             await ResultExtractor.ExportToExcel(studentsData, fileName);
 
             IsBusy = false;
-            if (MessageBox.Ask("Do you want to open exported file ?",
+            if (MessageBox.Ask("Do you want to open exported file ?" +
+                $"\nYou can also find the result pdf(s) in {Path.Combine(myDownloadsPath, "ERSB", _selectedRollFile)} ",
                 "Export Success") != MessageBoxResult.OK) return;
             if (File.Exists(fileName)) Process.Start(new ProcessStartInfo(fileName) { UseShellExecute = true });
         }
-
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             _cancelDownload =true;

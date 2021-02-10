@@ -1,7 +1,7 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
     <AssemblyName>ERSB</AssemblyName>
     <RootNamespace>ERSB</RootNamespace>
@@ -11,6 +11,7 @@
     <FileVersion>1.0.0.0</FileVersion>
     <AssemblyVersion>1.0.0.0</AssemblyVersion>
     <LangVersion>latest</LangVersion>
+    <ApplicationIcon></ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <DefineConstants>TRACE;Core</DefineConstants>
@@ -23,9 +24,9 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="CsvHelper" Version="22.1.2" />
-    <PackageReference Include="GemBox.Pdf" Version="15.0.1062" />
+    <PackageReference Include="GemBox.Pdf" Version="15.0.1077" />
     <PackageReference Include="GemBox.Spreadsheet" Version="47.0.1095" />
-    <PackageReference Include="HandyControls" Version="3.1.0" />
+    <PackageReference Include="HandyControls" Version="3.1.1" />
     <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="5.0.3">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
