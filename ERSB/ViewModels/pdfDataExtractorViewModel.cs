@@ -1,21 +1,22 @@
 ﻿using ERSB.Models;
+using ERSB.Modules;
+using GemBox.Pdf;
+using GemBox.Spreadsheet;
+using HandyControl.Controls;
+using Microsoft.Win32;
 using Prism.Commands;
 using Prism.Mvvm;
 using System;
-using System.Linq;
-using GemBox.Pdf;
-using ERSB.Modules;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using GemBox.Spreadsheet;
-using System.Threading.Tasks;
-using Microsoft.Win32;
-using System.IO;
-using HandyControl.Controls;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace ERSB.ViewModels
 {
-    public class pdfDataExtractorViewModel : BindableBase
+    public class pdfDataExtractorViewModel : BindableBase, IFileDragDropTarget
     {
         private string _busyText;
         private bool _isBusy;
@@ -51,20 +52,31 @@ namespace ERSB.ViewModels
             BusyText = "Loading...";
             Students.Clear();
             IsBusy = true;
+            var anyProcessed = false;
             var collection = new ObservableCollection<Student>();
             await Task.Run(() =>
             {
                 if (string.IsNullOrWhiteSpace(FileNames)) return;
-                var list = FileNames.Replace("\"", string.Empty,StringComparison.OrdinalIgnoreCase).Split('\n').ToList();
-                foreach (var pdfPath in list.Select(i => 
-                    i.Replace("\r", string.Empty,StringComparison.Ordinal)
-                    .Trim()))
+                var list = FileNames.Replace("\"", string.Empty, StringComparison.OrdinalIgnoreCase).Split('\n').ToList();
+                foreach (var pdfPath in list.Select(i =>
+                    i.Replace("\r", string.Empty, StringComparison.Ordinal)
+                    .Trim()).Where(i => Path.GetExtension(i).ToLower() == ".pdf"))
                 {
-                    using var document = PdfDocument.Load(pdfPath);
+                    anyProcessed = true;
+                    PdfDocument document;
+                    try
+                    {
+                        document = PdfDocument.Load(pdfPath);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Warning(ex.Message, "Warning");
+                        continue;
+                    }
                     Student pdfData;
                     try
                     {
-                        pdfData = useCoordinates != null && (bool) useCoordinates
+                        pdfData = useCoordinates != null && (bool)useCoordinates
                             ? ResultExtractor.GetResultUsingCoordinates(document.Pages[0])
                             : ResultExtractor.GetResultUsingHeaders(document.Pages[0]);
                     }
@@ -82,7 +94,7 @@ namespace ERSB.ViewModels
                 }
             });
             Students = collection;
-            CanExport = true;
+            CanExport = anyProcessed;
             IsBusy = false;
 
         }
@@ -94,7 +106,7 @@ namespace ERSB.ViewModels
                 DefaultExt = "xlsx",
                 Filter = "Excel Files (*.xls, *.xlsx)|*.xls;*.xlsx|CSV Files (*.csv)|*.csv"
             };
-            if (!(bool) saveFileDialog.ShowDialog()) return;
+            if (!(bool)saveFileDialog.ShowDialog()) return;
             var fileName = saveFileDialog.FileName;
             BusyText = "Exporting...";
             IsBusy = true;
@@ -116,5 +128,35 @@ namespace ERSB.ViewModels
 
 
         }
+
+        public void OnFileDrop(string[] filepaths, string senderName)
+        {
+            var files = new List<string>();
+            var anyPdf = false;
+            foreach (var item in filepaths.Where(i => Path.GetExtension(i).ToLower() == ".pdf" || Directory.Exists(i)))
+            {
+                anyPdf = true;
+                var isFile = IsFile(item);
+                if (isFile)
+                {
+                    files.Add(item);
+                }
+                else
+                {
+                    files.AddRange(Directory.GetFiles(item).Where(i => Path.GetExtension(i)
+                                                                           .ToLower() == ".pdf"));
+                }
+            }
+            if (anyPdf)
+            {
+                FileNames = files.ToFileNamesString();
+            }
+        }
+
+        private static bool IsFile(string item)
+        {
+            return !Directory.Exists(item);
+        }
+
     }
 }

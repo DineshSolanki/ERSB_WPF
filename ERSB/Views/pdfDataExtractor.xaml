@@ -6,9 +6,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:ERSB.ViewModels"
+             xmlns:modules="clr-namespace:ERSB.Modules"
              mc:Ignorable="d"
-             prism:ViewModelLocator.AutoWireViewModel="True"
-             d:DataContext="{d:DesignInstance viewModels:pdfDataExtractorViewModel}">
+             prism:ViewModelLocator.AutoWireViewModel="True" AllowDrop="True"
+              modules:FolderDragDropHelper.IsFileDragDropEnabled="True" modules:FolderDragDropHelper.FileDragDropTarget="{Binding}"
+             d:DataContext="{d:DesignInstance viewModels:pdfDataExtractorViewModel}" >
     <hc:BusyIndicator IsBusy="{Binding IsBusy}">
         <hc:BusyIndicator.BusyContent>
             <TextBlock Text="{Binding BusyText}" FontWeight="Bold" />
@@ -20,7 +22,8 @@
                 <RowDefinition Height="500*" />
             </Grid.RowDefinitions>
             <VirtualizingStackPanel Grid.Row="0">
-                <hc:TextBox Text="{Binding FileNames, UpdateSourceTrigger=PropertyChanged}" Height="100" VerticalScrollBarVisibility="Hidden" TextWrapping="Wrap" AcceptsReturn="True" TextAlignment="Left" HorizontalScrollBarVisibility="Disabled"/>
+                <hc:TextBox AllowDrop="True" Text="{Binding FileNames, UpdateSourceTrigger=PropertyChanged}" Height="100" VerticalScrollBarVisibility="Hidden" TextWrapping="Wrap" AcceptsReturn="True" TextAlignment="Left" HorizontalScrollBarVisibility="Disabled"
+                           />
                 <ToggleButton x:Name="Tgl" IsChecked="False" Style="{StaticResource ToggleButtonSwitch}"
                               Content="Use coordinates?" />
             </VirtualizingStackPanel>
