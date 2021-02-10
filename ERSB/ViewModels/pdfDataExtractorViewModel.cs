@@ -113,9 +113,14 @@ namespace ERSB.ViewModels
             await Task.Run(() =>
             {
                 var dt = Students.ToDataTable();
+                
                 var workbook = new ExcelFile();
                 var worksheet = workbook.Worksheets.Add("ERSB");
                 worksheet.InsertDataTable(dt, new InsertDataTableOptions { ColumnHeaders = true });
+                foreach (var col in worksheet.Rows[0].AllocatedCells)
+                {
+                    col.Style.Font.Weight = ExcelFont.BoldWeight;
+                }
                 workbook.DocumentProperties.BuiltIn[BuiltInDocumentProperties.Author] = "ERSB ";
                 for (var i = 0; i < worksheet.CalculateMaxUsedColumns(); ++i)
                     worksheet.Columns[i].AutoFit(1, worksheet.Rows[1], worksheet.Rows[^1]);

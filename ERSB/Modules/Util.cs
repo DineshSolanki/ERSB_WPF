@@ -35,7 +35,7 @@ namespace ERSB.Modules
                     type = Nullable.GetUnderlyingType(type);
 
 
-                dataTable.Columns.Add(propertyDescriptor.Name, type!);
+                dataTable.Columns.Add(propertyDescriptor.DisplayName, type!);
             }
             var values = new object[propertyDescriptorCollection.Count];
             foreach (var iListItem in iEnumerable)
