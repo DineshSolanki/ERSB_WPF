@@ -124,6 +124,7 @@ namespace ERSB.ViewModels
                     col.Style.Font.Weight = ExcelFont.BoldWeight;
                 }
                 workbook.DocumentProperties.BuiltIn[BuiltInDocumentProperties.Author] = "ERSB ";
+                workbook.DocumentProperties.BuiltIn[BuiltInDocumentProperties.Application] = "ERSB v1.0";
                 for (var i = 0; i < worksheet.CalculateMaxUsedColumns(); ++i)
                     worksheet.Columns[i].AutoFit(1, worksheet.Rows[1], worksheet.Rows[^1]);
                 workbook.Save(fileName);

@@ -21,6 +21,7 @@
     <DefineConstants>TRACE;Core</DefineConstants>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Resources\ERSB Logo.png" />
     <None Remove="Resources\home.ico" />
   </ItemGroup>
   <ItemGroup>
@@ -39,6 +40,7 @@
     <PackageReference Include="Prism.Wpf" Version="8.0.0.1909" />
   </ItemGroup>
   <ItemGroup>
+    <Resource Include="Resources\ERSB Logo.png" />
     <Resource Include="Resources\home.ico" />
   </ItemGroup>
 </Project>

@@ -94,6 +94,11 @@ namespace ERSB.Modules
                 var worksheet = workbook.Worksheets.Add("ERSB");
                 worksheet.InsertDataTable(dt, new InsertDataTableOptions {ColumnHeaders = true});
                 workbook.DocumentProperties.BuiltIn[BuiltInDocumentProperties.Author] = "ERSB ";
+                workbook.DocumentProperties.BuiltIn[BuiltInDocumentProperties.Application] = "ERSB v1.0";
+                foreach (var col in worksheet.Rows[0].AllocatedCells)
+                {
+                    col.Style.Font.Weight = ExcelFont.BoldWeight;
+                }
                 for (var i = 0; i < worksheet.CalculateMaxUsedColumns(); ++i)
                     worksheet.Columns[i].AutoFit(1, worksheet.Rows[1], worksheet.Rows[^1]);
                 workbook.Save(exportFileName);

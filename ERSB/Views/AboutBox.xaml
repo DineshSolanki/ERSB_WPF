@@ -1,0 +1,41 @@
+﻿<UserControl x:Class="ERSB.Views.AboutBox"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/" xmlns:hc="https://handyorg.github.io/handycontrol"
+             prism:ViewModelLocator.AutoWireViewModel="True" Width="600" Height="300">
+    <prism:Dialog.WindowStyle>
+        <Style TargetType="Window">
+            <Setter Property="prism:Dialog.WindowStartupLocation" Value="CenterOwner" />
+            <Setter Property="ResizeMode" Value="NoResize" />
+            <Setter Property="WindowStyle" Value="ToolWindow" />
+            <Setter Property="SizeToContent" Value="WidthAndHeight" />
+            <Setter Property="ShowInTaskbar" Value="False" />
+            <Setter Property="hc:WindowAttach.IsDragElement" Value="True" />
+            <Setter Property="Title" Value="{Binding Title}" />
+        </Style>
+    </prism:Dialog.WindowStyle>
+    <ContentControl Background="White" Style="{StaticResource LiveStyle}" Margin="10"  HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid Width="580" Height="256">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <Image Grid.Column="0" Source="{Binding Logo}" RenderOptions.BitmapScalingMode="HighQuality" Width="200" Margin="-2,0,2,-20" />
+            <StackPanel Grid.Column="1">
+                <hc:TextBox BorderThickness="0" IsReadOnly="True" Text="{Binding Title}" FontSize="36" FontFamily="Monotype Corsiva" Foreground="Firebrick" Background="Transparent" />
+                <hc:TextBox BorderThickness="0" IsReadOnly="True" Focusable="False" Text="{Binding Version}" hc:InfoElement.Title="Version :" hc:InfoElement.TitlePlacement="Left" Background="Transparent" />
+                <hc:TextBox BorderThickness="0" IsReadOnly="True" Focusable="False" Text="{Binding License}" hc:InfoElement.Title="Licence :" hc:InfoElement.TitlePlacement="Left" Background="Transparent" />
+                <TextBlock Text="{Binding Description}" TextWrapping="Wrap" Foreground="RoyalBlue" ScrollViewer.CanContentScroll="True" />
+                <TextBlock Text="{Binding AdditionalNotes}" Margin="0,5,0,0"  />
+                <ContentControl VerticalAlignment="Top">
+                    <hc:Interaction.Triggers>
+                        <hc:EventTrigger EventName="MouseLeftButtonDown">
+                            <hc:InvokeCommandAction Command="hc:ControlCommands.OpenLink" CommandParameter="https://aprogrammers.wordpress.com" />
+                        </hc:EventTrigger>
+                    </hc:Interaction.Triggers>
+                    <TextBlock Text="{Binding Website}" HorizontalAlignment="Stretch" FontStyle="Oblique" Foreground="Blue" Margin="0,4,0,0" MouseEnter="TextBlock_MouseEnter" MouseLeave="TextBlock_MouseLeave"  />
+                </ContentControl>
+            </StackPanel>
+        </Grid>
+    </ContentControl>
+</UserControl>

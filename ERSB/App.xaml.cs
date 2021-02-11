@@ -1,4 +1,5 @@
-﻿using ERSB.Views;
+﻿using ERSB.ViewModels;
+using ERSB.Views;
 using GemBox.Pdf;
 using GemBox.Spreadsheet;
 using HandyControl.Controls;
@@ -28,6 +29,7 @@ namespace ERSB
             containerRegistry.RegisterForNavigation<BrowserControl>();
             containerRegistry.RegisterForNavigation<DataManagement>();
             containerRegistry.RegisterForNavigation<pdfDataExtractor>();
+            containerRegistry.RegisterDialog<AboutBox, AboutBoxViewModel>("AboutBox");
         }
         internal static void UpdateSkin(string skin)
         {
