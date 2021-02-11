@@ -104,13 +104,36 @@ namespace ERSB.Views
 
         private async void BtnScrap_Click(object sender, RoutedEventArgs e)
         {
+            //TODO: Messagebox button glitching beause IsBusy set false before calling them
+            if (CmbFileNames.SelectedItem is null)
+            {
+                MessageBox.Warning("Please select a roll number file from the drop down", "No roll number file selected");
+                return;
+            }
+            
             _selectedRollFile = CmbFileNames.SelectedItem.ToString();
+            if (!File.Exists(_selectedRollFile.CreateCsvFilePath()))
+            {
+                MessageBox.Error("File does not exist", "File Error");
+                return;
+            }
             IsBusy = true;
             CompletedDownloads = 0;
             _downloads.Clear();
             _index = 0;
             if (WebView?.CoreWebView2 == null) return;
-            _rollNumbers = new List<string>(ResultExtractor.GetRollNumbersList(_selectedRollFile));
+            try
+            {
+                _rollNumbers = new List<string>(ResultExtractor.GetRollNumbersList(_selectedRollFile));
+            }
+            catch (Exception ex)
+            {
+                
+                MessageBox.Error(ex.Message, "Exception occured");
+                IsBusy = false;
+                return;
+            }
+            
             _totalValidRoll = _rollNumbers.Count;
             //foreach (var rollNumber in RollNumbers)
             //{
@@ -164,10 +187,10 @@ namespace ERSB.Views
             var fileName = saveFileDialog.FileName;
             await ResultExtractor.ExportToExcel(studentsData, fileName);
 
-            IsBusy = false;
             if (MessageBox.Ask("Do you want to open exported file ?" +
                 $"\nYou can also find the result pdf(s) in {Path.Combine(myDownloadsPath, "ERSB", _selectedRollFile)} ",
-                "Export Success") != MessageBoxResult.OK) return;
+                "Export Success") != MessageBoxResult.OK) { IsBusy = false; return; }
+            IsBusy = false;
             if (File.Exists(fileName)) Process.Start(new ProcessStartInfo(fileName) { UseShellExecute = true });
         }
         

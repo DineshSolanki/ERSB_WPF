@@ -107,14 +107,22 @@ namespace ERSB.Modules
 
         public static IEnumerable<string> GetRollNumbersList(string fileName)
         {
-            var filePath = fileName.CreateCsvFilePath();
-            using var reader = new StreamReader(filePath);
-            using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
-            var records = csv.GetRecords<RollList>();
-            IEnumerable<string> rollNumbers = new List<string>(records.Select(
-                record => record.RollNumber));
-            csv.Dispose();
-            return rollNumbers;
+            try
+            {
+                var filePath = fileName.CreateCsvFilePath();
+                using var reader = new StreamReader(filePath);
+                using var csv = new CsvReader(reader, CultureInfo.InvariantCulture);
+                var records = csv.GetRecords<RollList>();
+                IEnumerable<string> rollNumbers = new List<string>(records.Select(
+                    record => record.RollNumber));
+                csv.Dispose();
+                return rollNumbers;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            
         }
 
         public static async Task<IEnumerable<Student>> ExtractDataFromPdfsAsync(string downloadLocation,
