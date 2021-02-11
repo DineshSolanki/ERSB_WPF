@@ -115,8 +115,7 @@ namespace ERSB.ViewModels
             IsBusy = true;
             await Task.Run(() =>
             {
-                var dt = Students.ToDataTable();
-
+                using var dt = Students.ToDataTable();
                 var workbook = new ExcelFile();
                 var worksheet = workbook.Worksheets.Add("ERSB");
                 worksheet.InsertDataTable(dt, new InsertDataTableOptions { ColumnHeaders = true });

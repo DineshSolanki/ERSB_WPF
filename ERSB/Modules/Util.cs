@@ -62,8 +62,8 @@ namespace ERSB.Modules
 
         public static string GetDataFolderPath()
         {
-            var appPath = Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location);
-            var path = Path.Combine(appPath!, "data").Remove(0, 6); //remove "file://"
+            var appPath = Path.GetDirectoryName(AppContext.BaseDirectory);
+            var path = Path.Combine(appPath!, "data");
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
