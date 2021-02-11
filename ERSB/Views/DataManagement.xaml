@@ -21,7 +21,7 @@
     </hc:GlobalShortcut.KeyBindings>
     <Border Effect="{StaticResource EffectShadow4}" Background="{DynamicResource RegionBrush}" Margin="20" CornerRadius="16">
         <Border Margin="0" CornerRadius="16">
-            <Grid>
+            <Grid >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="auto"/>
                     <ColumnDefinition Width="*"/>

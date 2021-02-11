@@ -62,7 +62,7 @@ namespace ERSB.Modules
 
         public static string GetDataFolderPath()
         {
-            var appPath = Path.GetDirectoryName(AppContext.BaseDirectory);
+            var appPath = AppContext.BaseDirectory;
             var path = Path.Combine(appPath!, "data");
             if (!Directory.Exists(path))
             {
