@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using HandyControl.Themes;
+using System.Windows;
 using System.Windows.Controls;
 
 namespace ERSB.Views
@@ -15,9 +16,9 @@ namespace ERSB.Views
 
         private void ButtonSkins_OnClick(object sender, RoutedEventArgs e)
         {
-            if (e.OriginalSource is not Button button || button.Tag is null) return;
+            if (e.OriginalSource is not Button button || button.Tag is not ApplicationTheme tag) return;
             PopupConfig.IsOpen = false;
-            App.UpdateSkin(button.Tag.ToString());
+            App.UpdateSkin(tag);
         }
         #endregion
     }

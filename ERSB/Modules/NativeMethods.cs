@@ -6,9 +6,7 @@ namespace ERSB.Modules
     static class NativeMethods
     {
         [DllImport("shell32")]
-#pragma warning disable CA5392 // Use DefaultDllImportSearchPaths attribute for P/Invokes
         private static extern int SHGetKnownFolderPath(ref Guid rfid, uint dwFlags, IntPtr hToken, ref IntPtr np);
-#pragma warning restore CA5392 // Use DefaultDllImportSearchPaths attribute for P/Invokes
 
         public static string GetDownloadFolder()
         {

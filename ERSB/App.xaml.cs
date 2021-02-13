@@ -31,14 +31,9 @@ namespace ERSB
             containerRegistry.RegisterForNavigation<pdfDataExtractor>();
             containerRegistry.RegisterDialog<AboutBox, AboutBoxViewModel>("AboutBox");
         }
-        internal static void UpdateSkin(string skin)
+        internal static void UpdateSkin(ApplicationTheme skin)
         {
-            ThemeManager.Current.ApplicationTheme = skin switch
-            {
-                "Dark" => ApplicationTheme.Dark,
-                "Default" => ApplicationTheme.Light,
-                _ => ThemeManager.Current.ApplicationTheme
-            };
+            ThemeManager.Current.ApplicationTheme = skin;
             //ThemeManager.Current.AccentColor = Brushes.Red;
         }
     }
